@@ -13,6 +13,10 @@
 		AC3FD7A122A4F5F40030E220 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC3FD79F22A4F5F40030E220 /* Main.storyboard */; };
 		AC3FD7A322A4F5F40030E220 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC3FD7A222A4F5F40030E220 /* Assets.xcassets */; };
 		AC3FD7A622A4F5F40030E220 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC3FD7A422A4F5F40030E220 /* LaunchScreen.storyboard */; };
+		AC3FD7AC22A4F91A0030E220 /* ScanBleSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FD7AB22A4F91A0030E220 /* ScanBleSignal.swift */; };
+		AC3FD7C522A60CF30030E220 /* BleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FD7C422A60CF30030E220 /* BleManager.swift */; };
+		AC3FD7C922A61EEE0030E220 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FD7C822A61EEE0030E220 /* NSData.swift */; };
+		AC3FD7CB22AA44C70030E220 /* BleManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FD7CA22AA44C70030E220 /* BleManagerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		AC3FD7A222A4F5F40030E220 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC3FD7A522A4F5F40030E220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC3FD7A722A4F5F40030E220 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC3FD7AB22A4F91A0030E220 /* ScanBleSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanBleSignal.swift; sourceTree = "<group>"; };
+		AC3FD7C422A60CF30030E220 /* BleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleManager.swift; sourceTree = "<group>"; };
+		AC3FD7C822A61EEE0030E220 /* NSData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSData.swift; sourceTree = "<group>"; };
+		AC3FD7CA22AA44C70030E220 /* BleManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleManagerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +75,7 @@
 		AC3FD78C22A4F5A20030E220 /* sdk-ble-ios */ = {
 			isa = PBXGroup;
 			children = (
+				AC3FD7BF22A5F5AD0030E220 /* Source */,
 				AC3FD78D22A4F5A20030E220 /* sdk_ble_ios.h */,
 				AC3FD78E22A4F5A20030E220 /* Info.plist */,
 			);
@@ -84,6 +93,33 @@
 				AC3FD7A722A4F5F40030E220 /* Info.plist */,
 			);
 			path = "sdk-ble-ios-Examples";
+			sourceTree = "<group>";
+		};
+		AC3FD7BF22A5F5AD0030E220 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				AC3FD7C322A60C990030E220 /* Managers */,
+				AC3FD7C022A605D20030E220 /* Models */,
+				AC3FD7AB22A4F91A0030E220 /* ScanBleSignal.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		AC3FD7C022A605D20030E220 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AC3FD7C822A61EEE0030E220 /* NSData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AC3FD7C322A60C990030E220 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				AC3FD7C422A60CF30030E220 /* BleManager.swift */,
+				AC3FD7CA22AA44C70030E220 /* BleManagerDelegate.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +183,7 @@
 				TargetAttributes = {
 					AC3FD78922A4F5A20030E220 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 					AC3FD79822A4F5F40030E220 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -197,6 +234,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC3FD7AC22A4F91A0030E220 /* ScanBleSignal.swift in Sources */,
+				AC3FD7C522A60CF30030E220 /* BleManager.swift in Sources */,
+				AC3FD7CB22AA44C70030E220 /* BleManagerDelegate.swift in Sources */,
+				AC3FD7C922A61EEE0030E220 /* NSData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +397,7 @@
 		AC3FD79322A4F5A20030E220 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -365,6 +407,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "sdk-ble-ios/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -373,6 +416,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zoyi.wi.sdk-ble-ios";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -381,6 +425,7 @@
 		AC3FD79422A4F5A20030E220 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -390,6 +435,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "sdk-ble-ios/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -410,6 +456,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8278Q64QFC;
 				INFOPLIST_FILE = "sdk-ble-ios-Examples/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -428,6 +475,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8278Q64QFC;
 				INFOPLIST_FILE = "sdk-ble-ios-Examples/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
