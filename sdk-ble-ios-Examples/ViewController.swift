@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, BleManagerDeleagate {
 
+    @IBOutlet weak var lbMacAddress: UILabel!
+    @IBOutlet weak var tbMac: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
