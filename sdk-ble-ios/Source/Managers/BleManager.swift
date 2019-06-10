@@ -19,14 +19,14 @@ func dlog<T>( _ object:  @autoclosure () -> T, color: UIColor = UIColor.black) {
 public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     var manager:CBCentralManager!
     let targetServiceUUIDs : [CBUUID]!
-    var delegate: BleManagerDeleagate?
-    var targetMacs: [String]
+    private var delegate: BleManagerDeleagate?
+    private var targetMacs: [String]
     
     private static let zoyiServiceUUID = "b02d"
     private static let zoyiOUI = "f4fd2b"
     @objc public static var debugMode = false
     
-    init(initWithDelegate delegate : BleManagerDeleagate) {
+    @objc public init(initWithDelegate delegate : BleManagerDeleagate) {
         targetServiceUUIDs = [CBUUID(string: BleManager.zoyiServiceUUID)]
         self.delegate = delegate
         self.targetMacs = []
@@ -46,16 +46,16 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
         NSLog("did update State")
     }
     
-    func stopScan() {
+    @objc public func stopScan() {
         self.manager?.stopScan()
     }
     
-    func startScanWithMacs(targetMacs: [String]) {
+    @objc public func startScanWithMacs(targetMacs: [String]) {
         self.targetMacs = targetMacs
         self.startScan();
     }
     
-    func startScan() {
+    private func startScan() {
         self.manager?.scanForPeripherals(withServices: targetServiceUUIDs, options: nil)
     }
     
