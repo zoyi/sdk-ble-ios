@@ -26,20 +26,29 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
     private static let zoyiOUI = "f4fd2b"
     @objc public static var debugMode = false
     
+    @objc private(set) public var isPowerOn: Bool
+    @objc private(set) public var isScanning: Bool
+
     @objc public init(initWithDelegate delegate : BleManagerDeleagate) {
         targetServiceUUIDs = [CBUUID(string: BleManager.zoyiServiceUUID)]
         self.delegate = delegate
         self.targetMacs = []
+        self.isPowerOn = false
+        self.isScanning = false
+
         super.init()
+
         manager = CBCentralManager(delegate: self, queue: nil)
     }
     
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        print(central)
         switch (central.state) {
         case .unsupported:
             NSLog("BLE UNSUPPORTED")
         case .poweredOn:
             NSLog("Power on")
+            self.isPowerOn = true
         default:
             NSLog("state: \(central.state)")
         }
@@ -48,6 +57,7 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
     
     @objc public func stopScan() {
         self.manager?.stopScan()
+        self.isScanning = false
     }
     
     @objc public func startScanWithMacs(targetMacs: [String]) {
@@ -57,6 +67,7 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
     
     private func startScan() {
         self.manager?.scanForPeripherals(withServices: targetServiceUUIDs, options: nil)
+        self.isScanning = true
     }
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
@@ -76,8 +87,11 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
         } else {
             return;
         }
+        dlog("Fined: \(mac)")
         
-        delegate?.didDiscoverMac(with: mac, rssi: rssi, timestamp: NSDate().timeIntervalSince1970)
+        if self.targetMacs.contains(mac) {
+            delegate?.didDiscoverMac(with: mac, rssi: rssi, timestamp: NSDate().timeIntervalSince1970)
+        }
     }
     
     private func getMacAddressFromServiceData(advertisementData: [String : Any]) -> String? {
