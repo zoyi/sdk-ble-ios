@@ -8,11 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AC3FD78F22A4F5A20030E220 /* sdk_ble_ios.h in Headers */ = {isa = PBXBuildFile; fileRef = AC3FD78D22A4F5A20030E220 /* sdk_ble_ios.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC3FD79C22A4F5F40030E220 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FD79B22A4F5F40030E220 /* AppDelegate.swift */; };
-		AC3FD79E22A4F5F40030E220 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FD79D22A4F5F40030E220 /* ViewController.swift */; };
-		AC3FD7A122A4F5F40030E220 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC3FD79F22A4F5F40030E220 /* Main.storyboard */; };
-		AC3FD7A322A4F5F40030E220 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC3FD7A222A4F5F40030E220 /* Assets.xcassets */; };
-		AC3FD7A622A4F5F40030E220 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC3FD7A422A4F5F40030E220 /* LaunchScreen.storyboard */; };
 		AC3FD7AC22A4F91A0030E220 /* ScanBleSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FD7AB22A4F91A0030E220 /* ScanBleSignal.swift */; };
 		AC3FD7C522A60CF30030E220 /* BleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FD7C422A60CF30030E220 /* BleManager.swift */; };
 		AC3FD7C922A61EEE0030E220 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3FD7C822A61EEE0030E220 /* NSData.swift */; };
@@ -24,12 +19,6 @@
 		AC3FD78D22A4F5A20030E220 /* sdk_ble_ios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sdk_ble_ios.h; sourceTree = "<group>"; };
 		AC3FD78E22A4F5A20030E220 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC3FD79922A4F5F40030E220 /* sdk-ble-ios-Examples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "sdk-ble-ios-Examples.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC3FD79B22A4F5F40030E220 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AC3FD79D22A4F5F40030E220 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AC3FD7A022A4F5F40030E220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		AC3FD7A222A4F5F40030E220 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AC3FD7A522A4F5F40030E220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		AC3FD7A722A4F5F40030E220 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC3FD7AB22A4F91A0030E220 /* ScanBleSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanBleSignal.swift; sourceTree = "<group>"; };
 		AC3FD7C422A60CF30030E220 /* BleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleManager.swift; sourceTree = "<group>"; };
 		AC3FD7C822A61EEE0030E220 /* NSData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSData.swift; sourceTree = "<group>"; };
@@ -58,7 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				AC3FD78C22A4F5A20030E220 /* sdk-ble-ios */,
-				AC3FD79A22A4F5F40030E220 /* sdk-ble-ios-Examples */,
 				AC3FD78B22A4F5A20030E220 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -80,19 +68,6 @@
 				AC3FD78E22A4F5A20030E220 /* Info.plist */,
 			);
 			path = "sdk-ble-ios";
-			sourceTree = "<group>";
-		};
-		AC3FD79A22A4F5F40030E220 /* sdk-ble-ios-Examples */ = {
-			isa = PBXGroup;
-			children = (
-				AC3FD79B22A4F5F40030E220 /* AppDelegate.swift */,
-				AC3FD79D22A4F5F40030E220 /* ViewController.swift */,
-				AC3FD79F22A4F5F40030E220 /* Main.storyboard */,
-				AC3FD7A222A4F5F40030E220 /* Assets.xcassets */,
-				AC3FD7A422A4F5F40030E220 /* LaunchScreen.storyboard */,
-				AC3FD7A722A4F5F40030E220 /* Info.plist */,
-			);
-			path = "sdk-ble-ios-Examples";
 			sourceTree = "<group>";
 		};
 		AC3FD7BF22A5F5AD0030E220 /* Source */ = {
@@ -221,9 +196,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC3FD7A622A4F5F40030E220 /* LaunchScreen.storyboard in Resources */,
-				AC3FD7A322A4F5F40030E220 /* Assets.xcassets in Resources */,
-				AC3FD7A122A4F5F40030E220 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,31 +217,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC3FD79E22A4F5F40030E220 /* ViewController.swift in Sources */,
-				AC3FD79C22A4F5F40030E220 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		AC3FD79F22A4F5F40030E220 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AC3FD7A022A4F5F40030E220 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		AC3FD7A422A4F5F40030E220 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AC3FD7A522A4F5F40030E220 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		AC3FD79022A4F5A20030E220 /* Debug */ = {
