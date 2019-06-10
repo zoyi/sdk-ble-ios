@@ -11,7 +11,7 @@ import CoreBluetooth
 
 func dlog<T>( _ object:  @autoclosure () -> T, color: UIColor = UIColor.black) {
     guard BleManager.debugMode else { return }
-    let message = "[ZBeaconKit] \(Date()): \(object())\n\n"
+    let message = "[WIBLELib] \(Date()): \(object())\n\n"
     print(message, terminator: "")
 }
 
@@ -32,8 +32,6 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
 
     @objc public init(initWithDelegate delegate : BleManagerDeleagate) {
         targetServiceUUIDs = [self.zoyiServiceUUID]
-        print(self.zoyiServiceUUID)
-        print(targetServiceUUIDs)
         self.delegate = delegate
         self.targetMacs = []
         self.isPowerOn = false
@@ -77,10 +75,8 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
         var mac: String;
         
         let macFromServiceData = self.getMacAddressFromServiceData(advertisementData: advertisementData)
-        dlog(macFromServiceData)
         
         let macFromManufacturerData = self.getMAcAddressFromManufacturerData(advertisementData: advertisementData)
-        dlog(macFromManufacturerData)
         
         if (macFromServiceData != nil) {
             mac = macFromServiceData!
@@ -90,7 +86,10 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
             return;
         }
         dlog("Fined: \(mac)")
-        
+
+        print (self.targetMacs)
+        print (self.targetMacs.contains(mac))
+
         if self.targetMacs.contains(mac) {
             delegate?.didDiscoverMac(with: mac, rssi: rssi, timestamp: NSDate().timeIntervalSince1970)
         }
@@ -98,6 +97,10 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
     
     private func getMacAddressFromServiceData(advertisementData: [String : Any]) -> String? {
         let serviceDatas = advertisementData[CBAdvertisementDataServiceDataKey] as! NSDictionary?
+        if (serviceDatas == nil) {
+            return nil
+        }
+
         let serviceData = serviceDatas![self.zoyiServiceUUID] as! Data?
         if (serviceData == nil) {
             return nil
