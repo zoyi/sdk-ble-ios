@@ -4,15 +4,25 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>WIBLELib.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>sdk-ble-ios-Examples.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>sdk-ble-ios.xcscheme_^#shared#^_</key>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>AC3FD78922A4F5A20030E220</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
