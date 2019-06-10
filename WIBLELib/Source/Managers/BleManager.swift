@@ -99,6 +99,10 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
     private func getMacAddressFromServiceData(advertisementData: [String : Any]) -> String? {
         let serviceDatas = advertisementData[CBAdvertisementDataServiceDataKey] as! NSDictionary?
         let serviceData = serviceDatas![self.zoyiServiceUUID] as! Data?
+        if (serviceData == nil) {
+            return nil
+        }
+
         let macAddr = serviceData?.subdata(in: 1..<7).hexString
         
         if ((macAddr?.contains(self.zoyiOUI))!) {
