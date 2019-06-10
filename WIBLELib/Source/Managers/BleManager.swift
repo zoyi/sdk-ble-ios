@@ -22,15 +22,18 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
     private var delegate: BleManagerDeleagate?
     private var targetMacs: [String]
     
-    private static let zoyiServiceUUID = "b02d"
-    private static let zoyiOUI = "f4fd2b"
+    private let zoyiServiceUUID = CBUUID(string: "b02d")
+    private let zoyiOUI:String = "f4fd2b"
+
     @objc public static var debugMode = false
     
     @objc private(set) public var isPowerOn: Bool
     @objc private(set) public var isScanning: Bool
 
     @objc public init(initWithDelegate delegate : BleManagerDeleagate) {
-        targetServiceUUIDs = [CBUUID(string: BleManager.zoyiServiceUUID)]
+        targetServiceUUIDs = [self.zoyiServiceUUID]
+        print(self.zoyiServiceUUID)
+        print(targetServiceUUIDs)
         self.delegate = delegate
         self.targetMacs = []
         self.isPowerOn = false
@@ -42,17 +45,16 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
     }
     
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        print(central)
         switch (central.state) {
         case .unsupported:
-            NSLog("BLE UNSUPPORTED")
+            dlog("BLE UNSUPPORTED")
         case .poweredOn:
-            NSLog("Power on")
+            dlog("Power on")
             self.isPowerOn = true
         default:
-            NSLog("state: \(central.state)")
+            dlog("state: \(central.state)")
         }
-        NSLog("did update State")
+        dlog("did update State")
     }
     
     @objc public func stopScan() {
@@ -96,13 +98,14 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
     
     private func getMacAddressFromServiceData(advertisementData: [String : Any]) -> String? {
         let serviceDatas = advertisementData[CBAdvertisementDataServiceDataKey] as! NSDictionary?
-        let serviceData = serviceDatas![BleManager.zoyiServiceUUID] as! Data?
+        let serviceData = serviceDatas![self.zoyiServiceUUID] as! Data?
         let macAddr = serviceData?.subdata(in: 1..<7).hexString
         
-        if ((macAddr?.contains(BleManager.zoyiOUI))!) {
+        if ((macAddr?.contains(self.zoyiOUI))!) {
             dlog(macAddr)
             return macAddr
         }
+
         return nil
     }
     
@@ -115,7 +118,7 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
         }
         
         let macAddr = manufacturerDatas?.hexString
-        if ((macAddr?.contains(BleManager.zoyiOUI))!) {
+        if ((macAddr?.contains(self.zoyiOUI))!) {
             return macAddr
         }
         return nil
