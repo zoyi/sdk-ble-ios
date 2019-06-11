@@ -1,0 +1,16 @@
+PODS:
+  - WIBLELib (0.0.10)
+
+DEPENDENCIES:
+  - WIBLELib
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - WIBLELib
+
+SPEC CHECKSUMS:
+  WIBLELib: 70354ca9ebec96c82eb45b4ef26be8732ae5b3fa
+
+PODFILE CHECKSUM: d95a6894c2d4fbbe7d347a40a65524d2337a1e38
+
+COCOAPODS: 1.7.1

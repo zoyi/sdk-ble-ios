@@ -13,7 +13,9 @@ This BLE SDK providing a simple API set that gives third party Apps ability to g
 
 * iOS 8.0 or above
 
-## Simple Flow Graph
+## How to use it
+
+### Simple Flow Graph
 
 ```
      +-------------------------------+      
@@ -48,70 +50,6 @@ This BLE SDK providing a simple API set that gives third party Apps ability to g
      |                              |       
      +------------------------------+       
 ```
-
-## How to use it(Objective-C)
-
-### Install WI BLE Library Framework from CocoaPods(iOS 8.0+)
-
-Add below into your Podfile on Xcode.
-
-```ruby
-target YOUR_PROJECT_TARGET do
-  pod 'WIBLELib'
-end
-```
-
-
-Install WIBLELib Framework through CocoaPods.
-
-```sh
-pod repo update
-pod install
-```
-
-Now you can see WI BLE framework by inspecting YOUR_PROJECT.xcworkspace.
-
-### Create a BleManager that you want to manage the scan process, Assign BleManagerDeleagate to BleManager to get invoked.
-
-```objective-c
-@interface ViewController : UIViewController<BleManagerDeleagate>
-  @property BleManager* manager;
-...
-@end
-```
-
-### Start scanning by filtering with specific MAC addresses
-
-```objective-c
-  // startScanWithmacs
-  if (![_manager isScanning] &&
-      [_manager isPowerOn] &&
-      [_manager startScanWithMacsWithTargetMacs:macs])
-  {
-    // Success
-  } else {
-    // Failed
-  }
-```
-
-### Receive the discovery callback from BleManager
-
-```objective-c
-  - (void)didDiscoverMacWith:(NSString * _Nonnull)mac rssi:(NSInteger)rssi timestamp:(NSTimeInterval)timestamp {
-    if (rssi > [self rssiThreashHold]) {
-      [self stopScanning];
-    }
-  }
-```
-
-### Remember to stop scanning when you are done.
-
-```objective-c
-  [_manager stopScan];
-```
-
-
-## How to use it(Swift)
 
 ### Install WI BLE Library Framework from CocoaPods(iOS 8.0+)
 
@@ -186,7 +124,7 @@ class ViewController: UIViewController, BleManagerDeleagate{
 ### Remember to stop scanning when you are done.
 
 ```swift
-  manager.stopScanning()
+  self.stopScanning()
 ```
 
 

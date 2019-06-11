@@ -1,0 +1,6 @@
+framework module WIBLELib {
+  umbrella header "WIBLELib-umbrella.h"
+
+  export *
+  module * { export * }
+}
