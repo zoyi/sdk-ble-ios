@@ -46,11 +46,13 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
         switch (central.state) {
         case .unsupported:
             dlog("BLE UNSUPPORTED")
+            self.isPowerOn = false
         case .poweredOn:
             dlog("Power on")
             self.isPowerOn = true
         default:
             dlog("state: \(central.state)")
+            self.isPowerOn = false
         }
         dlog("did update State")
     }
@@ -60,13 +62,23 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
         self.isScanning = false
     }
     
-    @objc public func startScanWithMacs(targetMacs: [String]) {
-        self.targetMacs = targetMacs
+    @objc public func startScanWithMacs(targetMacs: [String]) -> Bool {
+        self.targetMacs = targetMacs.map{
+            $0.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        }.filter{
+            $0.count == 12 && $0.contains(self.zoyiOUI)
+        }
+
+        if (self.targetMacs.count == 0 || self.isPowerOn == false) {
+            dlog("Valid Target Mac Count: \(self.targetMacs.count), Bluetooth power state: \(self.isPowerOn)")
+            return false
+        }
         self.startScan();
+        return true
     }
     
     private func startScan() {
-        self.manager?.scanForPeripherals(withServices: targetServiceUUIDs, options: nil)
+        self.manager?.scanForPeripherals(withServices: targetServiceUUIDs, options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
         self.isScanning = true
     }
     
@@ -85,10 +97,7 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
         } else {
             return;
         }
-        dlog("Fined: \(mac)")
-
-        print (self.targetMacs)
-        print (self.targetMacs.contains(mac))
+        dlog("Find mac:\(mac), rssi:\(rssi)")
 
         if self.targetMacs.contains(mac) {
             delegate?.didDiscoverMac(with: mac, rssi: rssi, timestamp: NSDate().timeIntervalSince1970)
@@ -118,8 +127,6 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
     
     private func getMAcAddressFromManufacturerData(advertisementData: [String : Any]) -> String? {
         let manufacturerDatas = advertisementData[CBAdvertisementDataManufacturerDataKey] as! Data?
-        
-        dlog(manufacturerDatas)
         if (manufacturerDatas == nil) {
             return nil
         }
