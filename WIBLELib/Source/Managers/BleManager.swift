@@ -72,13 +72,14 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
         dlog("Valid Target Mac Count: \(self.targetMacs.count), Bluetooth power state: \(self.isPowerOn)")
         if (BleManager.debugMode) {
             for mac in self.targetMacs {
-                dlog(mac)
+                dlog("\t> \(mac)")
             }
         }
 
         if (self.targetMacs.count == 0 || self.isPowerOn == false) {
             return false
         }
+
         self.startScan();
         return true
     }
