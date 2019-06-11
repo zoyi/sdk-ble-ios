@@ -69,8 +69,14 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
             $0.count == 12 && $0.contains(self.zoyiOUI)
         }
 
+        dlog("Valid Target Mac Count: \(self.targetMacs.count), Bluetooth power state: \(self.isPowerOn)")
+        if (BleManager.debugMode) {
+            for mac in self.targetMacs {
+                dlog(mac)
+            }
+        }
+
         if (self.targetMacs.count == 0 || self.isPowerOn == false) {
-            dlog("Valid Target Mac Count: \(self.targetMacs.count), Bluetooth power state: \(self.isPowerOn)")
             return false
         }
         self.startScan();
@@ -86,10 +92,14 @@ public final class BleManager: NSObject, CBCentralManagerDelegate, CBPeripheralD
         let rssi = Int(truncating: RSSI)
         var mac: String;
         
+        if rssi == 127 {
+            return;
+        }
+
         let macFromServiceData = self.getMacAddressFromServiceData(advertisementData: advertisementData)
         
         let macFromManufacturerData = self.getMAcAddressFromManufacturerData(advertisementData: advertisementData)
-        
+
         if (macFromServiceData != nil) {
             mac = macFromServiceData!
         } else if (macFromManufacturerData != nil) {
