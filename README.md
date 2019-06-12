@@ -1,5 +1,5 @@
-# [Walinsights](https://walkinsights.com) - Offline Customer Analytics
-[Walinsights](https://walkinsights.com) analyzes customer behavior through outside traffic, store visits and returns through automated solution.
+# [Walkinsights](https://walkinsights.com) - Offline Customer Analytics
+[Walkinsights](https://walkinsights.com) analyzes customer behavior through outside traffic, store visits and returns through automated solution.
 
 [![Platform](https://img.shields.io/badge/platform-iOS-orange.svg)](https://cocoapods.org/pods/CHPlugin)
 [![Languages](https://img.shields.io/badge/language-Objective--C%20%7C%20Swift-orange.svg)](https://github.com/zoyi/channel-plugin-ios)
